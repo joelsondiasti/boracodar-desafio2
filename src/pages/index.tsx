@@ -3,8 +3,8 @@ import Image from "next/image";
 import { useState } from "react";
 import button360 from "../assets/360.png";
 import close from "../assets/close.png";
-import sofa from "../assets/sofa.png";
 import sofagif from "../assets/sofa.gif";
+import sofa from "../assets/sofa.png";
 
 export default function Home() {
   const [is360active, setIs360Active] = useState(false);
@@ -19,18 +19,25 @@ export default function Home() {
       <div className="w-full h-screen flex align-center justify-center bg-background">
         <div className="container grid grid-cols-2 gap-5 self-center">
           <div className="flex align-center justify-end relative">
-            <button onClick={()=> setIs360Active(!is360active)}>
-              <Image
-                src={is360active ? close : button360}
-                alt=""
-                className="absolute top-0 right-2"
-              />
+            <button
+              className="absolute top-0 right-2 flex align-center justify-center "
+              onClick={() => setIs360Active(!is360active)}
+            >
+              <Image src={is360active ? close : button360} alt="" />
             </button>
-            <Image
-              src={is360active ? sofagif : sofa}
-              alt="Sofá Margot II - Rosé"
-              className="w-[28rem] self-center"
-            />
+            {is360active ? (
+              <Image
+                src={sofagif}
+                alt="Sofá Margot II - Rosé"
+                className="w-[28rem] self-center"
+              />
+            ) : (
+              <Image
+                src={sofa}
+                alt="Sofá Margot II - Rosé"
+                className="w-[28rem] self-center"
+              />
+            )}
           </div>
           <div className="flex flex-col gap-3 aling-center justify-start">
             <span className="font-Lato text-[10px] text-purple]">
